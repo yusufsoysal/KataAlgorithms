@@ -9,13 +9,13 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
-public class InsertionSortTest {
+public class MergeSortTest {
 
-    private InsertionSort algorithm = new InsertionSort();
+    private MergeSort algorithm = new MergeSort();
 
     @Test
     public void shouldNotFailWhenParameterIsNull() {
-        List<Integer> sortedValues = algorithm.sort(null);
+        List<Integer> sortedValues = algorithm.sort((List<Integer>) null);
         assertThat(sortedValues, nullValue());
     }
 
