@@ -26,4 +26,9 @@ public class FindAnagramsInListTest {
     public void shouldReturnEmptyListForNotFoundWord(){
         assertThat(findAnagrams.find("tree"), CoreMatchers.equalTo(Collections.EMPTY_LIST));
     }
+
+    @Test
+    public void shouldReturnEmptyListForNullValue(){
+        assertThat(findAnagrams.find(null), CoreMatchers.equalTo(Collections.EMPTY_LIST));
+    }
 }

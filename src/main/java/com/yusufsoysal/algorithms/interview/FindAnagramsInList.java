@@ -37,6 +37,10 @@ public class FindAnagramsInList {
     }
 
     public List<String> find(String word) {
+        if( word == null ){
+            return Collections.EMPTY_LIST;
+        }
+
         String signature = createSignature(word);
         List<String> anagramWords = signatureMap.get(signature);
         if (anagramWords == null) {
