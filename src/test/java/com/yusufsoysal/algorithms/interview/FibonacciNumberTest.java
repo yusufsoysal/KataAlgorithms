@@ -2,8 +2,6 @@ package com.yusufsoysal.algorithms.interview;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -13,7 +11,7 @@ import static org.junit.Assert.assertThat;
 @RunWith(JUnitParamsRunner.class)
 public class FibonacciNumberTest {
 
-    private FibonacciNumber fibonacciCalculator = new FibonacciNumber();
+    private final FibonacciNumber fibonacciCalculator = new FibonacciNumber();
 
     @Test
     @Parameters({

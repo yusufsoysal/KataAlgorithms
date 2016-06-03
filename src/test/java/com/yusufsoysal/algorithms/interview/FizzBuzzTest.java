@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
 @RunWith(JUnitParamsRunner.class)
 public class FizzBuzzTest {
 
-    private FizzBuzz fizzBuzz = new FizzBuzz();
+    private final FizzBuzz fizzBuzz = new FizzBuzz();
 
     @Test
     @Parameters({"1", "2", "4", "7", "8", "11", "13", "14", "16", "17", "19"})

@@ -6,7 +6,7 @@ import java.util.List;
 public class InsertionSort {
     public List<Integer> sort(List<Integer> numbers) {
         if( numbers == null ){
-            return numbers;
+            return null;
         }
 
         List<Integer> newList = new LinkedList<>();

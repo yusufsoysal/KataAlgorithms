@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 public class FindAnagramsInListTest {
 
-    private FindAnagramsInList findAnagrams = new FindAnagramsInList(Arrays.asList("watch", "tac", "arc", "act"));
+    private final FindAnagramsInList findAnagrams = new FindAnagramsInList(Arrays.asList("watch", "tac", "arc", "act"));
 
     @Test
     public void shouldFindMultipleAnagrams(){
@@ -19,7 +19,7 @@ public class FindAnagramsInListTest {
 
     @Test
     public void shouldFindSingleAnagram(){
-        assertThat(findAnagrams.find("car"), CoreMatchers.equalTo(Arrays.asList("arc")));
+        assertThat(findAnagrams.find("car"), CoreMatchers.equalTo(Collections.singletonList("arc")));
     }
 
     @Test

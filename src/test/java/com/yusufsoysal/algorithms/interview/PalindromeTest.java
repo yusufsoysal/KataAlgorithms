@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class PalindromeTest {
 
-    private Palindrome palindrome = new Palindrome();
+    private final Palindrome palindrome = new Palindrome();
 
     @Test
     public void shouldReturnFalseForNullValue(){
@@ -15,17 +15,17 @@ public class PalindromeTest {
     }
 
     @Test
-    public void shouldReturnFalseForNonPalindromValue(){
+    public void shouldReturnFalseForNonPalindromeValue(){
         assertThat(palindrome.isPalindrome("abcdef"), CoreMatchers.equalTo(false));
     }
 
     @Test
-    public void shouldReturnTrueForPalindromValue(){
+    public void shouldReturnTrueForPalindromeValue(){
         assertThat(palindrome.isPalindrome("level"), CoreMatchers.equalTo(true));
     }
 
     @Test
-    public void shouldReturnTrueForPalindromValueInDifferentCases(){
+    public void shouldReturnTrueForPalindromeValueInDifferentCases(){
         assertThat(palindrome.isPalindrome("levEL"), CoreMatchers.equalTo(true));
     }
 

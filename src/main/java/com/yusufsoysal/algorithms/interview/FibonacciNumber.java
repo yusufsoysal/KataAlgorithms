@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class FibonacciNumber {
 
-    private Map<Integer,Integer> cache = new HashMap<>();
+    private final Map<Integer,Integer> cache = new HashMap<>();
 
     public int calculate(int number) {
         if( number <= 0 ){
@@ -14,9 +14,9 @@ public class FibonacciNumber {
             return number - 1;
         }
 
-        Integer preCalculatedvalue = cache.get(number);
-        if( preCalculatedvalue != null ){
-            return preCalculatedvalue;
+        Integer preCalculatedValue = cache.get(number);
+        if( preCalculatedValue != null ){
+            return preCalculatedValue;
         }
 
         int calculatedValue = calculate(number - 1) + calculate(number - 2);

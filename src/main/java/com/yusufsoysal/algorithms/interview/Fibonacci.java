@@ -9,11 +9,11 @@ import java.util.List;
  * Write a method that returns a Fibonacci sequence from 1 to n
  */
 public class Fibonacci {
-    public List calculate(int number) {
+    public List<Integer> calculate(int number) {
         List<Integer> fibonacciNumbers = new ArrayList<>(Arrays.asList(0, 1));
 
         if( number <= 0 ){
-            return Collections.EMPTY_LIST;
+            return Collections.<Integer>emptyList();
         } else if( number <= 2 ){
             return fibonacciNumbers.subList(0, number);
         }

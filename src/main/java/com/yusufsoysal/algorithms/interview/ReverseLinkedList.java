@@ -10,24 +10,24 @@ public class ReverseLinkedList {
             return linkedList;
         }
 
-        MyLinkedList next = linkedList.getNext();
+        MyLinkedList<T> next = linkedList.getNext();
         linkedList.setNext(null);
 
-        MyLinkedList reversed = reverse(next);
+        MyLinkedList<T> reversed = reverse(next);
         next.setNext(linkedList);
 
         return reversed;
     }
 
     static class MyLinkedList<T> {
-        private T value;
-        private MyLinkedList next;
+        private final T value;
+        private MyLinkedList<T> next;
 
         public MyLinkedList(T value){
             this.value = value;
         }
 
-        public MyLinkedList getNext() {
+        public MyLinkedList<T> getNext() {
             return next;
         }
 

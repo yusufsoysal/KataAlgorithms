@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 
 public class BubbleSortTest {
 
-    private BubbleSort algorithm = new BubbleSort();
+    private final BubbleSort algorithm = new BubbleSort();
 
     @Test
     public void shouldNotFailWhenParameterIsNull() {
@@ -23,7 +23,7 @@ public class BubbleSortTest {
     }
 
     @Test
-    public void shouldSortArrayWithMultipleElemenst(){
+    public void shouldSortArrayWithMultipleElements(){
         int[] sortedValues = algorithm.sort(new int[]{1, 4, 3, 9, -5, 100, 8});
         assertThat(sortedValues, equalTo(new int[]{-5, 1, 3, 4, 8, 9, 100}));
     }

@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 public class FibonacciTest {
 
-    private Fibonacci fibonacci = new Fibonacci();
+    private final Fibonacci fibonacci = new Fibonacci();
 
     @Test
     public void shouldReturnEmptyListIfNumberIsNegative(){
@@ -25,12 +25,12 @@ public class FibonacciTest {
 
     @Test
     public void shouldReturnOneIfNumberIsOne(){
-        assertThat(fibonacci.calculate(1), CoreMatchers.equalTo(Arrays.asList(0)));
+        assertThat(fibonacci.calculate(1), CoreMatchers.equalTo(Collections.singletonList(0)));
     }
 
     @Test
     public void shouldReturnOneAndTwoIfNumberIsTwo(){
-        assertThat(fibonacci.calculate(2), CoreMatchers.equalTo(Arrays.asList(0, 1)));
+        assertThat(fibonacci.calculate(2), CoreMatchers.equalTo(Arrays.<Integer>asList(0, 1)));
     }
 
     @Test

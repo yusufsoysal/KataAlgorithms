@@ -8,7 +8,7 @@ public class MergeSort {
 
     public List<Integer> sort(List<Integer> numbers) {
         if( numbers == null ){
-            return numbers;
+            return null;
         }
 
         int listSize = numbers.size();

@@ -12,7 +12,7 @@ import static org.junit.Assert.assertThat;
 @RunWith(JUnitParamsRunner.class)
 public class ReverseStringTest {
 
-    private ReverseString reverse = new ReverseString();
+    private final ReverseString reverse = new ReverseString();
 
     @Test
     public void shouldReturnNullWhenValueIsNull(){

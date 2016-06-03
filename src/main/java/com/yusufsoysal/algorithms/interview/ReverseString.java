@@ -7,7 +7,7 @@ public class ReverseString {
 
     public String reverse(String value) {
         if( value == null ){
-            return value;
+            return null;
         }
 
         char[] chars = value.toCharArray();

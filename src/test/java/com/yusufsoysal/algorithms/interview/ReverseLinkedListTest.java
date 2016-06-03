@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 
 public class ReverseLinkedListTest {
 
-    private ReverseLinkedList reverse = new ReverseLinkedList();
+    private final ReverseLinkedList reverse = new ReverseLinkedList();
 
     @Test
     public void shouldReturnSameLinkedListIfThereIsOnlyOneItem() {
