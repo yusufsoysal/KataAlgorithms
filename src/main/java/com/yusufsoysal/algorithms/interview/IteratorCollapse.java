@@ -2,6 +2,9 @@ package com.yusufsoysal.algorithms.interview;
 
 import java.util.Iterator;
 
+/*
+ * Write an algorithm that collapses a list of Iterators into a single Iterator.
+ */
 public class IteratorCollapse {
     public final <T> Iterator<T> singleIterator(Iterator<T> ... iterators) {
         return new MyIterator<>(iterators);
