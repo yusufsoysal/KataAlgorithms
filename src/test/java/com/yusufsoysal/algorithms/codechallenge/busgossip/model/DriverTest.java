@@ -88,7 +88,7 @@ public class DriverTest {
     }
 
     @Test
-    public void shouldHaveGossipWithİtself(){
+    public void shouldHaveGossipWithItself(){
         Driver driver1 = DriverBuilder.aDriver().withBusStops(1).build();
 
         assertThat(driver1.hadGossipWith(driver1), is(equalTo(true)));
