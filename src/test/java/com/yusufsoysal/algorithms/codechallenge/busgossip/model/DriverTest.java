@@ -1,10 +1,8 @@
 package com.yusufsoysal.algorithms.codechallenge.busgossip.model;
 
 import com.yusufsoysal.algorithms.codechallenge.busgossip.builder.DriverBuilder;
-import junitparams.naming.TestCaseName;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -20,7 +18,7 @@ public class DriverTest {
 
     @Test
     public void shouldMoveToNextStop(){
-        Driver driver = new Driver(Arrays.asList(1,2,3,4,5));
+        Driver driver = DriverBuilder.aDriver().withBusStops(1, 2, 3, 4, 5).build();
 
         assertThat(driver.moveBusToNextStop(), is(equalTo(2)));
         assertThat(driver.moveBusToNextStop(), is(equalTo(3)));
@@ -30,7 +28,7 @@ public class DriverTest {
 
     @Test
     public void shouldMoveToFirstStopWhenItGotToLast(){
-        Driver driver = new Driver(Arrays.asList(1,2,3));
+        Driver driver = DriverBuilder.aDriver().withBusStops(1, 2, 3).build();
 
         driver.moveBusToNextStop(); // second stop
         driver.moveBusToNextStop(); // last stop
@@ -40,7 +38,7 @@ public class DriverTest {
 
     @Test
     public void shouldMoveEvenThereIsOnlyOneStop(){
-        Driver driver = new Driver(Collections.singletonList(1));
+        Driver driver = DriverBuilder.aDriver().withBusStops(1).build();
 
         assertThat(driver.moveBusToNextStop(), is(equalTo(1)));
         assertThat(driver.moveBusToNextStop(), is(equalTo(1)));
@@ -100,6 +98,15 @@ public class DriverTest {
     public void shouldReturnNumberOfStops(){
         Driver driver1 = DriverBuilder.aDriver().withBusStops(1, 3, 5, 6, 20, 33).build();
         assertThat(driver1.getStopCount(), is(equalTo(6)));
+    }
+
+    @Test
+    public void shouldReturnNumberOfGossips(){
+        Driver driver1 = DriverBuilder.aDriver().withBusStops(1).build();
+        Driver driver2 = DriverBuilder.aDriver().withBusStops(1).build();
+        Driver driver3 = DriverBuilder.aDriver().withBusStops(1).withGossippedDrivers(driver1, driver2).build();
+
+        assertThat(driver3.getGossippedDriversCount(), is(equalTo(3)));
     }
 
 }

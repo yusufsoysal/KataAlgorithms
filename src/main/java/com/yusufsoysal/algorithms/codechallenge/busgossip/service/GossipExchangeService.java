@@ -8,49 +8,57 @@ import java.util.stream.IntStream;
 public class GossipExchangeService {
 
 
-    public Integer makeDriversExchangeGossip(Driver ... drivers) {
-
-        boolean allGossipsCompleted;
+    public Integer makeDriversExchangeGossip(Driver... drivers) {
+        boolean notAllGossipsExchanged;
         Integer numberOfStops = 0;
 
         int maxIterationCount = determineMaxIterationCount(drivers);
 
         do {
             numberOfStops++;
-            for( int i = 0; i<drivers.length; i++ ){
-                for( int j=i+1; j<drivers.length; j++ ){
-                    Driver driver1 = drivers[i];
-                    Driver driver2 = drivers[j];
 
-                    if( driver1.getCurrentStop() == driver2.getCurrentStop() ){
-                        driver1.makeGossipWith(driver2);
-                        driver2.makeGossipWith(driver1);
-                    }
-                }
+            exchangeGossip(drivers);
+            notAllGossipsExchanged = !isAllGossipsCompleted(drivers);
+
+            if( notAllGossipsExchanged ){
+                moveBusesIfNeeded(drivers);
             }
+        } while (notAllGossipsExchanged && numberOfStops <= maxIterationCount);
 
-            allGossipsCompleted = true;
-            for (Driver driver : drivers) {
-                if( driver.getGossippedDrivers().size() != drivers.length ){
-                    allGossipsCompleted = false;
-                }
-            }
-
-            if( !allGossipsCompleted ){
-                for (Driver driver : drivers) {
-                    driver.moveBusToNextStop();
-                }
-            }
-        } while( !allGossipsCompleted && numberOfStops <= maxIterationCount);
-
-        if( allGossipsCompleted ){
+        if (!notAllGossipsExchanged) {
             return numberOfStops;
         }
 
         return null;
     }
 
-    private int determineMaxIterationCount(Driver ... drivers){
+    private void moveBusesIfNeeded(Driver[] drivers) {
+        for (Driver driver : drivers) {
+            driver.moveBusToNextStop();
+        }
+    }
+
+    private boolean isAllGossipsCompleted(Driver[] drivers) {
+        int numberOfDrivers = drivers.length;
+        return !Arrays.stream(drivers)
+                .filter(driver -> driver.getGossippedDriversCount() != numberOfDrivers)
+                .findAny()
+                .isPresent();
+    }
+
+    private void exchangeGossip(Driver[] drivers) {
+        IntStream.range(0, drivers.length)
+                .forEach(index1 ->
+                        IntStream.range(index1 + 1, drivers.length)
+                                .filter(index2 -> drivers[index1].getCurrentStop() == drivers[index2].getCurrentStop())
+                                .forEach(index2 -> {
+                                    drivers[index1].makeGossipWith(drivers[index2]);
+                                    drivers[index2].makeGossipWith(drivers[index1]);
+                                })
+                );
+    }
+
+    private int determineMaxIterationCount(Driver[] drivers) {
         Integer maxIterationCount = Arrays.stream(drivers)
                 .map(Driver::getStopCount)
                 .reduce((a, b) -> findLeastCommonMultiple(a, b))
@@ -63,7 +71,7 @@ public class GossipExchangeService {
         final int bigger = Math.max(numberOne, numberTwo);
         final int smaller = Math.min(numberOne, numberTwo);
 
-        return IntStream.rangeClosed(1,smaller)
+        return IntStream.rangeClosed(1, smaller)
                 .filter(factor -> (factor * bigger) % smaller == 0)
                 .map(factor -> Math.abs(factor * bigger))
                 .findFirst()

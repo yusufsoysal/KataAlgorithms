@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Set;
 
 public class Driver {
-    private List<Integer> busStops;
+    private final List<Integer> busStops;
     private int currentStopIndex = 0;
-    private Set<Driver> gossippedDrivers = new HashSet<>();
+    private final Set<Driver> gossippedDrivers = new HashSet<>();
 
     public Driver(List<Integer> busStops) {
         if(CollectionUtils.isEmpty(busStops)){
@@ -42,7 +42,11 @@ public class Driver {
         return busStops.get( currentStopIndex );
     }
 
-    public Integer getStopCount() {
+    public int getStopCount() {
         return busStops.size();
+    }
+
+    public int getGossippedDriversCount() {
+        return gossippedDrivers.size();
     }
 }
