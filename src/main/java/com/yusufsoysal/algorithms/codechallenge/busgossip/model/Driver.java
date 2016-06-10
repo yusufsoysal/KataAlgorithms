@@ -17,11 +17,12 @@ public class Driver {
         }
 
         this.busStops = busStops;
+        this.gossippedDrivers.add(this);
     }
 
     public int moveBusToNextStop() {
-        currentStopIndex = (currentStopIndex + 1) % busStops.size();
-        return busStops.get( currentStopIndex );
+        currentStopIndex = (currentStopIndex + 1) % getStopCount();
+        return getCurrentStop();
     }
 
     public void makeGossipWith(Driver otherDriver) {
@@ -35,5 +36,13 @@ public class Driver {
 
     public boolean hadGossipWith(Driver otherDriver) {
         return gossippedDrivers.contains(otherDriver);
+    }
+
+    public int getCurrentStop() {
+        return busStops.get( currentStopIndex );
+    }
+
+    public Integer getStopCount() {
+        return busStops.size();
     }
 }
