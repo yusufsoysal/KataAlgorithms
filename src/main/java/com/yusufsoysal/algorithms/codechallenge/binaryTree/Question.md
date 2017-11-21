@@ -1,8 +1,7 @@
 Originally from https://www.hackerrank.com/challenges/ctci-is-binary-search-tree/problem
 
-Bus Gossip
+Is This a Binary Search Tree?
 ==========
-
 Description
 -----------
 

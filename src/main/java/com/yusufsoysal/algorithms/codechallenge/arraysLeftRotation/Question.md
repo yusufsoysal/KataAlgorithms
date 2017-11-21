@@ -1,8 +1,7 @@
 Originally from https://www.hackerrank.com/challenges/ctci-array-left-rotation/problem
 
-Bus Gossip
+Left Rotation
 ==========
-
 Description
 -----------
 

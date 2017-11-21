@@ -1,8 +1,7 @@
 Originally from https://www.hackerrank.com/challenges/ctci-making-anagrams/problem
 
-Bus Gossip
+Making Anagrams
 ==========
-
 Description
 -----------
 
