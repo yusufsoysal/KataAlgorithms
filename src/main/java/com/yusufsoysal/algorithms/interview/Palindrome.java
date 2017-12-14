@@ -34,7 +34,7 @@ public class Palindrome {
 
             cont =  firstCharacter == lastCharacter;
 
-        } while( startChar < endChar );
+        } while( cont && startChar < endChar );
 
         return cont;
     }
